@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
 
 <body>
@@ -15,16 +16,22 @@
         <nav class="main-nav">
             <ul class="navigation">
                 <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="project.html">Project</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)">Projects <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="data_science_project.html">Data Science Project</a>
+                    </div>
+                </li>
                 <li><a href="https://github.com/harryhoolahan/harryhoolahan.github.io">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/harry-hoolahan-76375616a/">LinkedIn</a></li>
                 <li><a href="https://rapidcharts.io/datascience">RapidCharts</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section class="hero">
-            <h1>Data Science</h1>
-            <h2>By Harry Hoolahan</h2>
+            <h1>Harry Hoolahan</h1>
+            <h2>Education: BSc Economics | First-Class Honours | University of Bristol | 2019 - 2022</h2>
         </section>
         <section class="content">
             <p>Welcome to my website that I created to host my portfolio and independent project, as part of the Data Science module I am studying at the University of Bristol.</p>
