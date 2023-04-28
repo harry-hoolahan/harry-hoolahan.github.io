@@ -1,0 +1,63 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "title": {
+        "text": "COVID-19 Deaths",
+        "subtitle": "Cumulative number of people dying within 28 days of testing positive to COVID-19",
+        "subtitleFontStyle": "italic",
+        "subtitleFontSize": 10,
+        "anchor": "start",
+        "color": "black"
+    },
+
+    "data": {
+        "url": "https://raw.githubusercontent.com/harryhoolahan/harryhoolahan.github.io/main/week2/ltla_2021-10-11.csv",
+        "format": { "type": "csv" }
+    },
+
+    "transform": [
+
+        {
+            "filter": {
+                "field": "areaName",
+                "oneOf": ["Bristol, City of", "Portsmouth", "Manchester"]
+            }
+        }
+
+
+    ],
+
+
+    "height": 300,
+    "width": 300,
+
+    "mark": { "type": "line", "point": false },
+
+    "encoding": {
+
+        "x": {
+            "field": "date",
+            "type": "temporal",
+            "title": null,
+            "axis": { "grid": false }
+        },
+
+        "y": {
+            "field": "cumDeaths28DaysByPublishDate",
+            "type": "quantitative",
+            "title": null,
+            "axis": { "grid": false }
+        },
+
+        "color": {
+            "field": "areaName",
+            "type": "nominal",
+            "scale": { "scheme": "yellowgreenblue" },
+            "title": null,
+            "legend": {
+                "orient": "top-left",
+                "fillColor": "#ffffff"
+            }
+        }
+    }
+}

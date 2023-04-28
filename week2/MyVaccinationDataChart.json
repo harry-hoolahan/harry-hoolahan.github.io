@@ -1,0 +1,60 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    
+    "title": {
+      "text": "Vaccination data",
+      "subtitle":"Cumulative people receiving their first dose, by location",
+      "subtitleFontStyle":"italic",
+      "subtitleFontSize":10,
+      "anchor": "start",
+      "color": "black"
+    },
+    
+     "data": {
+      "url": "https://raw.githubusercontent.com/xi19078/xi19078.github.io/main/ltla_2021-10-05.csv",
+      "format": {"type": "csv"}
+    },
+  
+     "transform":[
+        
+        {"filter": {
+          "field": "areaName", 
+          "oneOf": ["Bristol, City of", "Portsmouth"]}
+          }
+  
+  
+      ],
+    
+    
+    "height": 300,
+    "width": 300,
+     
+    "mark": {"type": "line", "point": false},
+   
+    "encoding": {
+  
+      "x": {
+        "field": "date",
+        "type": "temporal",
+        "title": null,
+        "axis": {"grid": false}
+      },
+  
+      "y": {
+        "field": "cumPeopleVaccinatedFirstDoseByPublishDate",
+        "type": "quantitative",
+        "title": null,
+        "axis": {"grid": false}
+      },
+  
+      "color": {
+        "field": "areaName",
+        "type": "nominal",
+        "scale": {"scheme": "set1"},
+        "title": null,
+        "legend": {
+          "orient": "top-left", 
+          "fillColor": "#FcFdFd"}
+      }
+  }
+  }
