@@ -1,0 +1,201 @@
+                body {
+                    background-color: #122b39;
+                    background-size: 200% 200%;
+                    overflow-x: hidden;
+                    margin-left: 10%;
+                    margin-right: 10%;
+                }
+                
+                h1 {
+                    color: rgb(185, 33, 33);
+                    font-family: 'Poppins', sans-serif;
+                    text-align: center;
+                    font-size: 70px;
+                    margin-top: 50px;
+                }
+                
+                h2 {
+                    text-align: center;
+                    color: #f4c245;
+                    font-family: 'Poppins', sans-serif;
+                }
+                
+                h3 {
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    text-align: left;
+                }
+                
+                p {
+                    font-family: 'Poppins', sans-serif;
+                    color: white;
+                    text-align: left;
+                }
+                
+                .chart {
+                    width: 400px;
+                    height: 390px;
+                    margin: 10px;
+                    padding: 5px;
+                    background-color: white;
+                    border: white solid 1px;
+                    border-radius: 10px;
+                    font-family: Arial;
+                    font-size: 10px;
+                }
+                /*Stlying for charts that include filtering sliders and selectors */
+                
+                .chart1 {
+                    width: 420px;
+                    height: 430px;
+                    margin: 10px;
+                    padding: 3px;
+                    background-color: #122b39;
+                    border: #f4c245 solid 1px;
+                    font-family: Arial;
+                    font-size: 10px;
+                }
+                /* Styles my selectors and sliders in my charts */
+                
+                .vega-bind-name {
+                    font-family: Arial;
+                    color: white;
+                    font-size: 16px;
+                    font-weight: 300;
+                    text-align: center;
+                }
+                
+                .vega-bind label span {
+                    color: #FEFEFE;
+                    font-family: Arial;
+                }
+                
+                .vega-bind label select {
+                    color: #FEFEFE;
+                    font-family: Arial;
+                }
+                
+                .vega-bind select {
+                    background-color: transparent;
+                }
+                
+                .vega-bind select option {
+                    background-color: #122b39;
+                }
+                /*Stlying for charts that don't include filtering sliders and selectors */
+                
+                .chart2 {
+                    width: 420px;
+                    height: 390px;
+                    margin: 10px;
+                    padding: 3px;
+                    background-color: #122b39;
+                    border: #f4c245 solid 1px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 10px;
+                }
+                
+                .container {
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: center;
+                    text-align: left;
+                }
+                /* Styles my selectors and sliders in my charts */
+                
+                .grid_items>div:nth-child(3n + 2) {
+                    background-color: #122b39;
+                }
+                
+                .grid_items>div:nth-child(3n) {
+                    background-color: #122b39;
+                }
+                
+                .textLink {
+                    color: white;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-weight: 400;
+                    text-align: center;
+                    text-decoration: underline;
+                }
+                
+                .textLink a:hover {
+                    color: rgb(255, 173, 31);
+                }
+                /* Styling the buttons that help navigate around the website */
+                
+                .navigationbutton {
+                    border: 1px solid #f4c245;
+                    background-color: #f4c245;
+                    color: black;
+                    font-family: Arial;
+                    line-height: 20px;
+                    font-weight: 600;
+                    border-radius: 150px;
+                    box-sizing: content-box;
+                    align-items: center;
+                    display: inline-block;
+                    font-size: 12px;
+                    margin: 1px 2px 1px 2px;
+                    text-decoration: none;
+                    max-width: 100px;
+                    outline-offset: 2px;
+                    overflow: hidden;
+                    padding: 5px 12px;
+                    text-align: left;
+                    text-overflow: ellipsis;
+                }
+                /* The width adjusts the site to the device in normal view and landscape view */
+                
+                @viewport {
+                    zoom: 1.0;
+                    width: extend-to-zoom;
+                }
+                /*----------------------------------------------------------------------------------------------------------------
+                                            DIFFERENT SCREEN SIZES
+    -----------------------------------------------------------------------------------------------------------------*/
+                
+                @media screen and (max-width: 959px) {
+                    body {
+                        overflow-x: hidden;
+                        margin-left: 1%;
+                        margin-right: 1%;
+                    }
+                    h1 {
+                        font-size: 20px;
+                    }
+                    .chart {
+                        width: 95%;
+                    }
+                    .chart1 {
+                        width: 95%;
+                    }
+                }
+                
+                @media screen and (max-width: 640px) {
+                    body {
+                        overflow-x: hidden;
+                        margin-left: 1%;
+                        margin-right: 1%;
+                    }
+                    .chart {
+                        width: 95%;
+                    }
+                    .chart1 {
+                        width: 95%;
+                    }
+                }
+                
+                @media screen and (max-width: 320px) {
+                    body {
+                        overflow-x: hidden;
+                        margin-left: 1%;
+                        margin-right: 1%;
+                    }
+                    .chart {
+                        width: 100%;
+                    }
+                    .chart1 {
+                        width: 100%;
+                    }
+                }

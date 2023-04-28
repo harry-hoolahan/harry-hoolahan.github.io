@@ -1,0 +1,193 @@
+    /* CSS for project page */
+    
+    body {
+        background-color: #122b39;
+        background-size: 200% 200%;
+        overflow-x: hidden;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    
+    h1 {
+        color: rgb(185, 33, 33);
+        font-family: 'Poppins', sans-serif;
+        text-align: left;
+        font-size: 75px;
+        margin-top: 50px;
+    }
+    
+    h2 {
+        color: #17a72b;
+        font-family: 'Poppins', sans-serif;
+        font-size: 35px;
+        text-align: left;
+    }
+    
+    h3 {
+        color: #f4c245;
+        font-family: 'Poppins', sans-serif;
+        font-size: 28px;
+    }
+    
+    h4 {
+        color: #f4c245;
+        font-family: 'Poppins', sans-serif;
+        font-size: medium;
+    }
+    
+    p {
+        font-family: Arial;
+        color: white;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    /* Divisions to contain my charts*/
+    
+    .container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        text-align: left;
+    }
+    /*Stlying for charts that include filtering sliders and selectors */
+    
+    .chart {
+        width: 375px;
+        height: 450px;
+        padding: 5px;
+        background-color: #122b39;
+        border: #f4c245 solid 1px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10pxp;
+        border-radius: 10px;
+    }
+    /* Styles my selectors and sliders in my charts */
+    
+    .vega-bind-name {
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        font-size: 16px;
+        font-weight: 300;
+    }
+    
+    .vega-bind label span {
+        color: #FEFEFE;
+        font-family: Arial;
+    }
+    /*Fig. 3 needs a slightly wider base */
+    
+    .figure3 {
+        width: 400px;
+        height: 420px;
+        padding: 5px;
+        background-color: #122b39;
+        border: #f4c245 solid 1px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10pxp;
+        border-radius: 10px;
+    }
+    /*Stlying for charts that do not include filtering sliders and selectors */
+    
+    .chart1 {
+        width: 375px;
+        height: 380px;
+        padding: 5px;
+        background-color: #122b39;
+        border: #f4c245 solid 1px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10pxp;
+        border-radius: 10px;
+    }
+    /* Styling the buttons that help navigate around the website */
+    
+    .navigationbutton {
+        border: 1px solid #f4c245;
+        background-color: #f4c245;
+        color: black;
+        font-family: Arial;
+        line-height: 20px;
+        font-weight: 600;
+        border-radius: 150px;
+        box-sizing: content-box;
+        align-items: flex-start;
+        display: inline-block;
+        font-size: 12px;
+        margin: 1px 2px 1px 2px;
+        text-decoration: none;
+        max-width: 100px;
+        outline-offset: 2px;
+        overflow: hidden;
+        padding: 5px 12px;
+        text-align: left;
+        text-overflow: ellipsis;
+    }
+    /* The width adjusts the site to the device in normal view and landscape view */
+    
+    @viewport {
+        zoom: 1.0;
+        width: extend-to-zoom;
+    }
+    /*----------------------------------------------------------------------------------------------------------------
+                                            DIFFERENT SCREEN SIZES
+    -----------------------------------------------------------------------------------------------------------------*/
+    
+    @media screen and (max-width: 959px) {
+        body {
+            overflow-x: hidden;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+        .chart {
+            width: 95%;
+        }
+        .figure3 {
+            width: 95%
+        }
+        .chart1 {
+            width: 95%;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+    
+    @media screen and (max-width: 640px) {
+        .body {
+            overflow: hidden;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+        .chart {
+            width: 95%;
+        }
+        .figure3 {
+            width: 90%
+        }
+        .chart1 {
+            width: 95%;
+        }
+    }
+    
+    p {
+        font-size: 21px;
+    }
+    
+    @media screen and (max-width: 320px) {
+        body {
+            overflow-x: hidden;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+        .chart {
+            width: 95%;
+        }
+        .figure3 {
+            width: 90%
+        }
+        .chart1 {
+            width: 95%;
+        }
+        P {
+            font-size: 20px;
+        }
+    }

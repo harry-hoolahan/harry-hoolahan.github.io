@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- ///////////////////  START HEAD //////////////////////////////////// -->
+
+<head>
+    <!--Gives the browser instructions on how to control the page's dimensions and scaling-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+
+    <!--The next three lines allow the Vega embed-->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.17.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.17.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+
+    <!--Linking my CSS file-->
+    <link rel="stylesheet" href="portfolio.css">
+    <!--Main title-->
+    <h1>Data Science Portfolio 2021</h1>
+</head>
+
+<!-- /////////////////// END HEAD //////////////////////////////////// -->
+
+
+<!-- ///////////////////  START BODY //////////////////////////////////// -->
+
+<!--Here are the buttons that link to my project and back to the homepage-->
+<a class="navigationbutton" href="index.html">Homepage</a>
+<a class="navigationbutton" href="project.html">Project</a>
+<a class="navigationbutton" href="https://github.com/harryhoolahan/harryhoolahan.github.io">GitHub</a>
+<a class="navigationbutton" href="https://rapidcharts.io/datascience">RapidCharts</a>
+
+<!-- ///////////////////  Week 1 //////////////////////////////////// -->
+<h2>Week 1 - Introduction to HTML</h2>
+<p>Here i have embedded three charts, two that are given to us in the class and one taken from the respository of charts that drive www.rapidcharts.io</p>
+
+<div class="container">
+    <!--Chart 1 -->
+    <div class="chart" id="chart1">
+        <script>
+            var myChart1 = "week1/chart1_covidUKRegions.json";
+            vegaEmbed('#chart1', myChart1);
+        </script>
+    </div>
+
+    <!--Chart 2 -->
+    <div class="chart" id="chart2">
+        <script>
+            var myChart2 = "week1/chart2_ukProductivity.json";
+            vegaEmbed('#chart2', myChart2);
+        </script>
+    </div>
+
+    <!--Chart 3 -->
+    <div class="chart1" id="chart3">
+        <script>
+            var myChart3 = "week1/chartcrypto1.json";
+            vegaEmbed('#chart3', myChart3);
+        </script>
+    </div>
+</div>
+
+<!-- ///////////////////  Week 2 //////////////////////////////////// -->
+<h2>Week 2 - Hosting Data</h2>
+<p>This week we learnt two routes for acessing data: uisng API data or saving a CSV file to our GitHub. The New Cases chart uses the live API data. The COVID-19 deaths chart acesses it's data from my GitHUb repository.
+</p>
+<div class="container">
+    <!--Chart 4 -->
+    <div class="chart" id="chart4">
+        <script>
+            var myChart4 = "week2/MyCovidDataAPIChart.json";
+            vegaEmbed('#chart4', myChart4);
+        </script>
+    </div>
+
+    <!--Chart 5 -->
+    <div class="chart" id="chart5">
+        <script>
+            var myChart5 = "week2/MyCovidDeathsDataChart.json";
+            vegaEmbed('#chart5', myChart5);
+        </script>
+    </div>
+</div>
+
+<!-- ///////////////////  Week 3 //////////////////////////////////// -->
+<h2>Week 3 - Editing data and writing JSON by hand</h2>
+<p>The data in the sixth chart is "in-line" JSON that i have written. The seventh chart is created by manipulating CVS data stored locally in my Github.
+</p>
+<div class="container">
+    <!--Chart 6 -->
+    <div class="chart" id="chart6">
+        <script>
+            var myChart6 = "week3/ManchesterUnitedPointsChart.json";
+            vegaEmbed('#chart6', myChart6);
+        </script>
+    </div>
+
+    <!--Chart 7 -->
+    <div class="chart" id="chart7">
+        <script>
+            var myChart7 = "week3/GDPperCapitaChart.json";
+            vegaEmbed('#chart7', myChart7);
+        </script>
+    </div>
+</div>
+
+<!-- ///////////////////  Week 4 //////////////////////////////////// -->
+<h2>Week 4 - API driven charts</h2>
+<p></p>
+<div class="container">
+    <!--Chart 8 -->
+    <div class="chart" id="chart8">
+        <script>
+            var myChart8 = "week4/EtheriumChart.json";
+            vegaEmbed('#chart8', myChart8);
+        </script>
+    </div>
+    <!--Chart 9 -->
+    <div class="chart" id="chart9">
+        <script>
+            var myChart9 = "week4/UK_CO_Emissions_Chart.json";
+            vegaEmbed('#chart9', myChart9);
+        </script>
+    </div>
+</div>
+
+<!-- ///////////////////  Week 5 //////////////////////////////////// -->
+<h2>Week 5 - Using loops to make mutiple API downloads </h2>
+<p>This week we built our first mini-dashboard.</p>
+<div class="container">
+    <!--Chart 10 -->
+    <div class="chart" id="chart10">
+        <script>
+            var myChart10 = "week5/ADA_Chart.json";
+            vegaEmbed('#chart10', myChart10);
+        </script>
+    </div>
+    <!--Chart 11 -->
+    <div class="chart" id="chart11">
+        <script>
+            var myChart11 = "week5/CRO_Chart.json";
+            vegaEmbed('#chart11', myChart11);
+        </script>
+    </div>
+</div>
+<div class="container">
+    <!--Chart 12 -->
+    <div class="chart" id="chart12">
+        <script>
+            var myChart12 = "week5/DOGE_Chart.json";
+            vegaEmbed('#chart12', myChart12);
+        </script>
+    </div>
+    <!--Chart 13 -->
+    <div class="chart" id="chart13">
+        <script>
+            var myChart13 = "week5/XRP_Chart.json";
+            vegaEmbed('#chart13', myChart13);
+        </script>
+    </div>
+</div>
+
+<!-- ///////////////////  Week 7 //////////////////////////////////// -->
+<h2>Week 7 - Scrapers </h2>
+<p>This week I built my first scraper using Python's BeautifulSoup library, collecting Olympic medals data from the BBC Sport webpage.
+</p>
+<div class="container">
+    <!--Chart 14 -->
+    <div class="chart" id="chart14">
+        <script>
+            var myChart14 = "week7/Tokyo_Gold_Medals_chart.json";
+            vegaEmbed('#chart14', myChart14);
+        </script>
+    </div>
+</div>
+
+<!-- ///////////////////  Week 8 ////////////////////////////////////// -->
+<h2>Week 8 - Talking Economics Conference </h2>
+<p>In the Talking Economics conference held in Bristol, Chris Giles mentioned that following the first lockdown in the UK, businesses adapted better to subsequent lockdowns. UK GDP data reveals that this point is valid: In April 2020 GDP had decreased 25.4
+    index points. However, the second lockdown called in November 2020 only resulted in a 2.2 index points decrease compared to September. This shows that businesses became more responsive, continuing to operate even in lockdown.
+</p>
+
+<div class="container">
+    <!--Chart 15 -->
+    <div class="chart" id="chart15">
+        <script>
+            var myChart15 = "week8/Monthly_GDP_UK_Chart.json";
+            vegaEmbed('#chart15', myChart15);
+        </script>
+    </div>
+</div>
+
+<!-- ///////////////////  Week 9 ////////////////////////////////////// -->
+<h2>Week 9 - Advanced Analytics </h2>
+<p>The prices of BTC and ETH were accessed by donwloading CSV files from Yahoo Finance website, and loaded into python. The files were converted to pandas data frames and merged on the 'Date' variable. Lastly, I included a OLS regression line through the
+    regression module in Vega-Lite. Clearly, there is a fairly strong positive relationship between the prices of the two cryptocurrencies.
+</p>
+
+<div class="container">
+    <!--Chart 16 -->
+    <div class="chart2" id="chart16">
+        <script>
+            var myChart16 = "week9/BTC_ETH_price_2021_Chart.json";
+            vegaEmbed('#chart16', myChart16);
+        </script>
+    </div>
+</div>
+
+<!-- ///////////////////  Week 10 ////////////////////////////////////// -->
+<h2>Week 10 - Interactive Charts </h2>
+<p>This week I built and embeded two interactive charts. The first chart includes sliders and selectors, which allow you to filter the data shown in th chart. The second chart includes a tooltip. By hovering over a point, the user can reveal the country
+    and other variables found in the data.
+</p>
+
+<div class="container">
+    <!--Chart 17 -->
+    <div class="chart1" id="chart17">
+        <script>
+            var myChart17 = "Project/Chart1_GDP_Olympic_Medals_Chart.json";
+            vegaEmbed('#chart17', myChart17);
+        </script>
+    </div>
+    <!--Chart 18 -->
+    <div class="chart2" id="chart18">
+        <script>
+            var myChart18 = "Project/Chart4_EU_Sport_Recreation_Spend.json";
+            vegaEmbed('#chart18', myChart18);
+        </script>
+    </div>
+</div>
+
+</body>
+<!-- ///////////////////  END BODY //////////////////////////////////// -->
+
+</html>
