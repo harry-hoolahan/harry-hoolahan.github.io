@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science - Harry Hoolahan</title>
+    <title>Harry Hoolahan</title>
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
@@ -15,16 +15,26 @@
     <header>
         <nav class="main-nav">
             <ul class="navigation">
-                <li><a href="portfolio.html">Portfolio</a></li>
                 <li class="dropdown">
-                    <a href="javascript:void(0)" onclick="toggleDropdown()">Projects <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content" id="dropdownContent">
+                    <a href="javascript:void(0)" onclick="toggleDropdown('portfolioDropdown', this)">Portfolio <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content" id="portfolioDropdown">
+                        <a href="data_science_portfolio.html" style="margin: 10px 0;">Data Science Portfolio</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" onclick="toggleDropdown('projectsDropdown', this)">Projects <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content" id="projectsDropdown">
                         <a href="data_science_project.html">Data Science Project</a>
                     </div>
                 </li>
-                <li><a href="https://github.com/harry-hoolahan/harry-hoolahan.github.io">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/harry-hoolahan-76375616a/">LinkedIn</a></li>
-                <li><a href="https://rapidcharts.io/datascience">RapidCharts</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" onclick="toggleDropdown('linksDropdown', this)">Links <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content" id="linksDropdown">
+                        <a href="https://github.com/harry-hoolahan/harry-hoolahan.github.io">GitHub</a>
+                        <a href="https://www.linkedin.com/in/harry-hoolahan-76375616a/">LinkedIn</a>
+                        <a href="https://rapidcharts.io/datascience">RapidCharts</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -36,19 +46,25 @@
             <h2>Data Analyst | Lazy Susan | Portsmouth, UK | 2018 - 2022</h2>
         </section>
         <section class="content">
-            <p>Welcome to my website that I created to host my portfolio and independent project, as part of the Data Science module I am studying at the University of Bristol.</p>
+            <p>Welcome to my personal website. This website exists to host my portfolio and independent projects I have completed.</p>
         </section>
     </main>
     <footer>
         <p>&copy; 2023 Harry Hoolahan | All Rights Reserved</p>
     </footer>
     <script>
-        function toggleDropdown() {
-            var dropdownContent = document.getElementById("dropdownContent");
-            if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
+        function toggleDropdown(id, arrowIcon) {
+            var dropdownContent = document.getElementById(id);
+            var mainNav = document.querySelector('.main-nav');
+
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+                mainNav.classList.remove('expanded');
+                arrowIcon.classList.remove('rotate');
             } else {
-                dropdownContent.style.display = "block";
+                dropdownContent.style.display = 'block';
+                mainNav.classList.add('expanded');
+                arrowIcon.classList.add('rotate')
             }
         }
     </script>
