@@ -17,8 +17,8 @@
             <ul class="navigation">
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li class="dropdown">
-                    <a href="javascript:void(0)">Projects <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
+                    <a href="javascript:void(0)" onclick="toggleDropdown()">Projects <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content" id="dropdownContent">
                         <a href="data_science_project.html">Data Science Project</a>
                     </div>
                 </li>
@@ -31,7 +31,9 @@
     <main>
         <section class="hero">
             <h1>Harry Hoolahan</h1>
-            <h2>Education: BSc Economics | First-Class Honours | University of Bristol | 2019 - 2022</h2>
+            <h2>Education: BSc Economics | First-Class Honours | University of Bristol | 2019 - 2022
+            </h2>
+            <h2>Data Analyst | Lazy Susan | Portsmouth, UK | 2018 - 2022</h2>
         </section>
         <section class="content">
             <p>Welcome to my website that I created to host my portfolio and independent project, as part of the Data Science module I am studying at the University of Bristol.</p>
@@ -40,6 +42,16 @@
     <footer>
         <p>&copy; 2023 Harry Hoolahan | All Rights Reserved</p>
     </footer>
+    <script>
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdownContent");
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        }
+    </script>
 </body>
 
 </html>

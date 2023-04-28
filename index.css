@@ -1,60 +1,131 @@
-    /* Import necessary fonts */
-    
-    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
-    /* General styles */
-    
-    body {
-        background-color: #f5f5f5;
-        margin: 0;
-        font-family: 'Lato', sans-serif;
-        line-height: 1.6;
-    }
-    
-    h1,
-    h2,
-    h3 {
-        font-family: 'Source Sans Pro', sans-serif;
-    }
-    /* Navigation */
-    
-    .main-nav {
-        background-color: #092a35;
-        padding: 1rem;
-    }
-    
-    .navigation {
-        list-style: none;
-        display: flex;
-        justify-content: space-around;
-    }
-    
-    .navigation a {
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.2s;
-    }
-    
-    .navigation a:hover {
-        color: #07a1e5;
-    }
-    /* Hero section */
-    
-    .hero {
-        background-color: #eaf0f6;
-        padding: 2rem 0;
-        text-align: center;
-    }
-    
-    h1 {
-        color: #3d3d3d;
-        font-size: 60px;
-        font-weight: 600;
-        margin-bottom: 20px;
-    }
-    
-    h2 {
-        color: #3d3d3d;
-        font-size: 24
-    }
+/* General styles */
+
+body {
+    background-color: #f5f5f5;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+html {
+    height: 100%;
+}
+
+main {
+    flex: 1;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+/* Navigation */
+
+.main-nav {
+    background-color: #092a35;
+    padding: 1rem;
+}
+
+.navigation {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navigation a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.navigation a:hover {
+    color: #07a1e5;
+}
+
+
+/* Dropdown styles */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #3d3d3d;
+    padding: 8px 0;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    color: #07a1e5;
+}
+
+.fas {
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+
+/* Hero section */
+
+.hero {
+    background-color: #eaf0f6;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+h1 {
+    color: #3d3d3d;
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #3d3d3d;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+
+/* Content section */
+
+.content {
+    padding: 2rem;
+}
+
+p {
+    color: #3d3d3d;
+    text-align: left;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: #092a35;
+    padding: 1rem;
+    text-align: center;
+}
+
+footer p {
+    color: #ffffff;
+}
