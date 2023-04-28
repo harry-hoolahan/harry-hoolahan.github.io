@@ -1,0 +1,60 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Figure 3: People per medal rank",
+        "subtitle": [
+            "Population data. Source World Bank. Olympic Medals. Source scraped",
+            "from Wikipedia."
+        ],
+        "subtitleFontStyle": "italic",
+        "subtitleFontSize": 10,
+        "subtitleColor": "#dbd8d8ec",
+        "anchor": "start",
+        "color": "white",
+        "fontWeight": "bold"
+    },
+    "config": { "background": "#122b39" },
+    "height": 300,
+    "width": 210,
+    "data": {
+        "url": "https://raw.githubusercontent.com/harryhoolahan/harryhoolahan.github.io/main/Project/World_Bank_Medal_Winners_Table_Data.csv"
+    },
+    "params": [{
+        "name": "Year",
+        "value": 2008,
+        "bind": { "input": "range", "min": 2008, "max": 2016, "step": 4 }
+    }],
+    "transform": [
+        { "filter": "datum.Year==Year" },
+        { "filter": { "field": "People per medal", "range": [0, 900000] } }
+    ],
+    "mark": { "type": "bar", "color": "#f4c245" },
+    "encoding": {
+        "tooltip": [
+            { "field": "Total", "title": "Total medals" },
+            { "field": "Gold" },
+            { "field": "Silver" },
+            { "field": "Bronze" },
+            { "field": "People per medal", "title": "People per medal" }
+        ],
+        "x": {
+            "title": "People per medal",
+            "field": "People per medal",
+            "type": "quantitative",
+            "axis": {
+                "labelAngle": 0,
+                "titleColor": "white",
+                "labelColor": "white",
+                "gridColor": "dimgrey",
+                "labelAlign": "left"
+            }
+        },
+        "y": {
+            "title": null,
+            "field": "Country",
+            "type": "ordinal",
+            "axis": { "labelColor": "white", "titleColor": "white", "grid": false },
+            "sort": "x"
+        }
+    }
+}
