@@ -8,6 +8,79 @@ body {
     margin-right: 10%;
 }
 
+
+/* Navigation */
+
+.main-nav {
+    background-color: #092a35;
+    padding: 1rem;
+}
+
+.navigation {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.navigation a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.navigation a:hover {
+    color: #07a1e5;
+}
+
+
+/* Dropdown styles */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    padding: 12px 20px;
+    /* Adjust the padding as needed */
+    z-index: 1;
+    white-space: nowrap;
+    /* Prevent line breaks */
+    margin-top: -10px;
+    /* Adjust the initial margin-top value as needed */
+    transition: margin-top 0.3s ease-in-out;
+    /* Add the transition property */
+}
+
+.dropdown.active .dropdown-content {
+    margin-top: 0;
+    /* Adjust the final margin-top value as needed */
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    padding: 4px 0;
+    /* Adjust the vertical padding as needed */
+    text-decoration: none;
+    display: block;
+    margin: 2px 0;
+    /* Adjust the vertical margin as needed */
+}
+
+.dropdown-content a:hover {
+    color: #07a1e5;
+}
+
+.fas {
+    font-size: 12px;
+    padding-left: 5px;
+}
+
 h1 {
     color: rgb(185, 33, 33);
     font-family: 'Poppins', sans-serif;
