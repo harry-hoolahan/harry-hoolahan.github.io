@@ -1,73 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Hoolahan</title>
-    <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harry Hoolahan | Audit, ACA, economics and data</title>
+  <meta name="description" content="Harry Hoolahan is a Senior Audit Associate at KPMG UK and an ICAEW ACA with a first-class economics degree from Bristol. Personal projects: a DCF explorer, an Olympics study and data science coursework.">
+  <meta name="theme-color" content="#edf2ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1a15" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Harry Hoolahan">
+  <meta property="og:description" content="Senior Audit Associate, ICAEW ACA. Economics graduate who builds financial and data models in his own time.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://harry-hoolahan.github.io/">
+  <link rel="canonical" href="https://harry-hoolahan.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js"></script>
 </head>
-
 <body>
-    <header>
-        <nav class="main-nav">
-            <ul class="navigation">
-                <li class="dropdown">
-                    <a href="javascript:void(0)" onclick="toggleDropdown('portfolioDropdown', this)">Portfolio <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content" id="portfolioDropdown">
-                        <a href="data_science_portfolio.html" style="margin: 10px 0;">Data Science Portfolio</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" onclick="toggleDropdown('projectsDropdown', this)">Projects <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content" id="projectsDropdown">
-                        <a href="data_science_project.html">Data Science Project</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" onclick="toggleDropdown('linksDropdown', this)">Links <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content" id="linksDropdown">
-                        <a href="https://github.com/harry-hoolahan/harry-hoolahan.github.io">GitHub</a>
-                        <a href="https://www.linkedin.com/in/harry-hoolahan-76375616a/">LinkedIn</a>
-                        <a href="https://rapidcharts.io/datascience">Data Scince Syllabus</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="hero">
-            <h1>Harry Hoolahan</h1>
-            <h2>Education: BSc Economics | First-Class Honours | University of Bristol | 2019 - 2022
-            </h2>
-            <h2>Data Analyst | Lazy Susan | Portsmouth, UK | 2018 - 2022</h2>
-        </section>
-        <section class="content">
-            <p>Welcome to my personal website. This website exists to host my portfolio and independent projects I have completed.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Harry Hoolahan | All Rights Reserved</p>
-    </footer>
-    <script>
-        function toggleDropdown(id, arrowIcon) {
-            var dropdownContent = document.getElementById(id);
-            var mainNav = document.querySelector('.main-nav');
+  <a class="skip-link" href="#main">Skip to content</a>
 
-            if (dropdownContent.style.display === 'block') {
-                dropdownContent.style.display = 'none';
-                mainNav.classList.remove('expanded');
-                arrowIcon.classList.remove('rotate');
-            } else {
-                dropdownContent.style.display = 'block';
-                mainNav.classList.add('expanded');
-                arrowIcon.classList.add('rotate')
-            }
-        }
-    </script>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="./">Harry Hoolahan</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="#experience">Experience</a>
+        <a href="#work">Selected work</a>
+        <a href="coursework/">Coursework</a>
+        <a href="https://www.linkedin.com/in/harry-hoolahan-76375616a/" rel="me noopener">LinkedIn</a>
+        <button class="theme-toggle" type="button">Dark mode</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="top">
+      <h1 id="top">Harry Hoolahan</h1>
+      <p class="lead">I'm a Senior Audit Associate in KPMG UK's Private Enterprise practice and an ICAEW ACA. I studied economics at Bristol and worked as an analyst at a garden-furniture retailer before moving into audit.</p>
+      <dl class="leaders">
+        <div><dt>Role</dt><span class="fill" aria-hidden="true"></span><dd>Senior Audit Associate, KPMG UK</dd></div>
+        <div><dt>Qualification</dt><span class="fill" aria-hidden="true"></span><dd>ICAEW ACA, all 15 exams passed</dd></div>
+        <div><dt>Degree</dt><span class="fill" aria-hidden="true"></span><dd>BSc Economics, first-class honours, Bristol</dd></div>
+        <div><dt>Before audit</dt><span class="fill" aria-hidden="true"></span><dd>Analyst, Lazy Susan, 2018–2022</dd></div>
+        <div><dt>Based in</dt><span class="fill" aria-hidden="true"></span><dd>London</dd></div>
+      </dl>
+    </section>
+
+    <div class="wrap">
+      <section class="section" id="experience" aria-labelledby="experience-h">
+        <h2 id="experience-h">Experience</h2>
+
+        <h3 class="ledger-group">KPMG UK, Private Enterprise</h3>
+        <ul class="ledger">
+          <li>
+            <span class="when">Oct 2023 – present</span>
+            <div>
+              <h4 class="role">Senior Audit Associate</h4>
+              <p>Audit work in the Private Enterprise practice while qualifying as a chartered accountant. Promoted to Senior Audit Associate in October 2025.</p>
+            </div>
+          </li>
+        </ul>
+
+        <h3 class="ledger-group">Lazy Susan, Portsmouth <span>Direct-to-consumer garden furniture retailer</span></h3>
+        <ul class="ledger">
+          <li>
+            <span class="when">Jun 2022 – Dec 2022</span>
+            <div>
+              <h4 class="role">Strategy &amp; Commercial Analyst</h4>
+              <p>Re-joined full-time after graduating. Reported to the founder and worked across purchasing, sales performance, pricing and accounts.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">Jul 2021 – Sep 2021</span>
+            <div>
+              <h4 class="role">Commercial Analyst</h4>
+              <p>Summer role alongside university.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">May 2020 – Sep 2020</span>
+            <div>
+              <h4 class="role">Pricing &amp; Commercial Analyst</h4>
+              <p>Re-joined as demand swung sharply during the first lockdown.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">Nov 2018 – Sep 2019</span>
+            <div>
+              <h4 class="role">Data Analyst</h4>
+              <p>Gap-year role created by the founder within a new data and analytics function, covering product pricing and online advertising.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" id="work" aria-labelledby="work-h">
+        <h2 id="work-h">Selected work</h2>
+        <p class="section-intro">Projects I've built outside my day job. None of it uses client information.</p>
+        <ul class="work">
+          <li>
+            <a class="row" href="projects/dcf/">
+              <span class="title">DCF explorer</span>
+              <span class="desc">Change the assumptions in a five-year discounted cash flow model and see value per share, the equity bridge and a WACC and terminal-growth sensitivity grid update straight away.</span>
+              <span class="meta">Interactive. Fictional company, illustrative inputs.</span>
+            </a>
+          </li>
+          <li>
+            <a class="row" href="projects/olympics/">
+              <span class="title">Economics and the Olympics</span>
+              <span class="desc">Four charts on how GDP, population and public spending relate to summer Olympic medals at Beijing 2008, London 2012 and Rio 2016, with the data checks behind each claim.</span>
+              <span class="meta">World Bank and Eurostat data. Python, Vega-Lite.</span>
+            </a>
+          </li>
+          <li>
+            <a class="row" href="coursework/">
+              <span class="title">Data science coursework</span>
+              <span class="desc">Interactive charts from a 2021 data science course: UK productivity, Bitcoin and other crypto prices, UK GDP per capita and Premier League points.</span>
+              <span class="meta">Coursework, University of Bristol. Vega-Lite.</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" id="background" aria-labelledby="background-h">
+        <h2 id="background-h">Qualifications and skills</h2>
+        <dl class="pairs">
+          <dt>ACA (ICAEW)</dt>
+          <dd>All 15 exams passed, including the Advanced Level. Chartered status follows completion of practical experience, expected December 2026.</dd>
+          <dt>BSc Economics</dt>
+          <dd>University of Bristol, 2019–2022. First-class honours.</dd>
+          <dt>Analysis</dt>
+          <dd>Financial statement analysis, discounted cash flow modelling, statistical analysis, trend forecasting, pricing and commercial analysis.</dd>
+          <dt>Tools</dt>
+          <dd>Excel, Python (pandas, requests, BeautifulSoup), Google BigQuery, Vega-Lite, HTML and CSS, Git.</dd>
+        </dl>
+      </section>
+
+      <section class="section" id="elsewhere" aria-labelledby="elsewhere-h">
+        <h2 id="elsewhere-h">Elsewhere</h2>
+        <p class="section-intro"><a href="https://www.linkedin.com/in/harry-hoolahan-76375616a/" rel="me noopener">LinkedIn</a> is the best place to reach me. The code for this site is on <a href="https://github.com/harry-hoolahan/harry-hoolahan.github.io" rel="me noopener">GitHub</a>.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Personal projects and coursework only. Nothing here draws on client information or speaks for my employer.</p>
+      <p>&copy; 2026 Harry Hoolahan. Last updated October 2026.</p>
+    </div>
+  </footer>
 </body>
-
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DCF explorer | Harry Hoolahan</title>
+  <meta name="description" content="An interactive five-year discounted cash flow model. Change growth, margins, WACC and terminal growth and see value per share and a sensitivity grid update.">
+  <meta name="theme-color" content="#edf2ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1a15" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://harry-hoolahan.github.io/projects/dcf/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <script src="../../assets/js/site.js"></script>
+  <script src="../../assets/js/dcf-model.js" defer></script>
+  <script src="../../assets/js/dcf-ui.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="../../">Harry Hoolahan</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="../../#experience">Experience</a>
+        <a href="../../#work" aria-current="page">Selected work</a>
+        <a href="../../coursework/">Coursework</a>
+        <a href="https://www.linkedin.com/in/harry-hoolahan-76375616a/" rel="me noopener">LinkedIn</a>
+        <button class="theme-toggle" type="button">Dark mode</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <div class="page-head">
+        <p class="crumb"><a href="../../#work">Selected work</a></p>
+        <h1>DCF explorer</h1>
+        <p class="lead">Value a business from its forecast cash flows, then see how much the answer depends on the discount rate and long-run growth.</p>
+      </div>
+
+      <div class="note">
+        <p>The company is fictional and every input is illustrative. This is a teaching model, not a valuation of any real business and not investment advice.</p>
+      </div>
+
+      <div class="dcf">
+        <form class="inputs" id="inputs" aria-label="Model assumptions" autocomplete="off" novalidate>
+          <fieldset>
+            <legend>Growth and profit</legend>
+            <div class="field"><label for="revenue0">Base-year revenue<span class="unit">£ million</span></label><input id="revenue0" name="revenue0" type="number" inputmode="decimal" step="any" min="0"></div>
+            <div class="field"><label for="g1">Revenue growth, Year 1<span class="unit">% a year</span></label><input id="g1" name="g1" type="number" inputmode="decimal" step="any"></div>
+            <div class="field"><label for="g5">Revenue growth, Year 5<span class="unit">% a year</span></label><input id="g5" name="g5" type="number" inputmode="decimal" step="any"><span class="hint">Growth moves in a straight line from Year 1 to Year 5.</span></div>
+            <div class="field"><label for="margin">EBIT margin<span class="unit">% of revenue</span></label><input id="margin" name="margin" type="number" inputmode="decimal" step="any"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Cash conversion</legend>
+            <div class="field"><label for="tax">Tax rate<span class="unit">% of EBIT</span></label><input id="tax" name="tax" type="number" inputmode="decimal" step="any"></div>
+            <div class="field"><label for="da">Depreciation and amortisation<span class="unit">% of revenue</span></label><input id="da" name="da" type="number" inputmode="decimal" step="any"></div>
+            <div class="field"><label for="capex">Capital expenditure<span class="unit">% of revenue</span></label><input id="capex" name="capex" type="number" inputmode="decimal" step="any"></div>
+            <div class="field"><label for="nwc">Working capital investment<span class="unit">% of the increase in revenue</span></label><input id="nwc" name="nwc" type="number" inputmode="decimal" step="any"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Valuation</legend>
+            <div class="field"><label for="wacc">Discount rate (WACC)<span class="unit">% a year</span></label><input id="wacc" name="wacc" type="number" inputmode="decimal" step="any"></div>
+            <div class="field"><label for="tg">Terminal growth<span class="unit">% a year</span></label><input id="tg" name="tg" type="number" inputmode="decimal" step="any"><span class="hint">Applies after Year 5. Must be below WACC.</span></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Capital structure</legend>
+            <div class="field"><label for="netDebt">Net debt<span class="unit">£ million</span></label><input id="netDebt" name="netDebt" type="number" inputmode="decimal" step="any"><span class="hint">Negative if the company holds net cash.</span></div>
+            <div class="field"><label for="shares">Shares outstanding<span class="unit">million</span></label><input id="shares" name="shares" type="number" inputmode="decimal" step="any" min="0"></div>
+          </fieldset>
+
+          <button class="btn quiet" type="button" id="reset">Reset to defaults</button>
+        </form>
+
+        <div class="outputs">
+          <section class="answer" aria-live="polite" aria-atomic="true" aria-labelledby="answer-h">
+            <h2 class="answer-label" id="answer-h">Value per share</h2>
+            <p class="error" id="error" role="alert" hidden></p>
+            <div id="answer-body">
+              <div class="big" id="per-share">&nbsp;</div>
+              <p class="sub" id="answer-sub"></p>
+              <dl class="kpis">
+                <div><dt>Enterprise value</dt><dd id="kpi-ev"></dd></div>
+                <div><dt>Equity value</dt><dd id="kpi-equity"></dd></div>
+                <div><dt>Terminal value share of EV</dt><dd id="kpi-tvshare"></dd></div>
+                <div><dt>Terminal value / Year 5 EBITDA</dt><dd id="kpi-multiple"></dd></div>
+              </dl>
+            </div>
+          </section>
+
+          <div id="results">
+            <h2>Free cash flow forecast</h2>
+            <div class="table-wrap">
+              <table class="fin" id="fcf-table">
+                <caption>£ million unless stated. Cash flows are discounted from the end of each year.</caption>
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <h2 id="bars-h">Free cash flow by year</h2>
+            <svg class="bars" id="bars" role="img" aria-labelledby="bars-h bars-desc" viewBox="0 0 640 250"></svg>
+            <p class="heat-axis" id="bars-desc"></p>
+
+            <h2>How sensitive is the answer?</h2>
+            <div class="table-wrap">
+              <table class="heat" id="heat">
+                <caption>Value per share (£) for different discount rates (down) and terminal growth rates (across). The red outline is your current case.</caption>
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <p class="heat-axis" id="heat-note"></p>
+          </div>
+
+          <details class="method">
+            <summary>How the model works</summary>
+            <div class="prose">
+              <p>Revenue grows from the base year at a rate that moves in a straight line from the Year 1 rate to the Year 5 rate. EBIT is a fixed share of revenue. Free cash flow is EBIT after tax, plus depreciation and amortisation, minus capital expenditure, minus the investment in working capital needed to support the extra revenue.</p>
+              <p>Each year's free cash flow is discounted at WACC. Terminal value is Year 5 free cash flow, grown once at the terminal growth rate and divided by WACC minus that growth rate. Enterprise value is the present value of the five forecast cash flows plus the present value of the terminal value. Subtract net debt for equity value, then divide by shares.</p>
+              <h3>What it leaves out</h3>
+              <ul>
+                <li>Cash flows arrive at year end. A mid-year convention would raise value slightly.</li>
+                <li>Tax is a flat rate on EBIT. There are no tax losses, deferred tax or interest tax shield.</li>
+                <li>Terminal free cash flow reuses Year 5 capital intensity. A real model would normalise capex against depreciation and working capital against terminal growth.</li>
+                <li>There are no leases, pensions, minorities or share-based pay in the bridge from enterprise value to equity value.</li>
+                <li>WACC is an input here, not built up from a cost of equity and cost of debt.</li>
+              </ul>
+              <p>The calculation is in <a href="https://github.com/harry-hoolahan/harry-hoolahan.github.io/blob/main/assets/js/dcf-model.js">one short file</a> and is checked by <a href="https://github.com/harry-hoolahan/harry-hoolahan.github.io/blob/main/tests/dcf-model.test.js">automated tests</a>, including a hand calculation and a case with a known closed-form answer.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="tip" id="tip" role="presentation" hidden></div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Personal projects and coursework only. Nothing here draws on client information or speaks for my employer.</p>
+      <p>&copy; 2026 Harry Hoolahan.</p>
+    </div>
+  </footer>
+</body>
+</html>
