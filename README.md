@@ -10,7 +10,7 @@ Plain HTML, CSS and JavaScript. There is no build step: push to `main` and GitHu
 | --- | --- |
 | `index.html` | Home page: experience, selected work, qualifications |
 | `projects/dcf/` | Interactive five-year DCF model with a sensitivity grid |
-| `projects/olympics/` | Economics and Olympic medals study: chart specs in `charts/`, data in `data/` |
+| `projects/olympics/` | Economics and Olympic medals study: chart specs in `charts/`, data and `CORRECTIONS.md` in `data/`, `analysis/analyse.py` recomputes every number and the Poisson model |
 | `coursework/` | Vega-Lite charts from a 2021 data science course, one folder per course week |
 | `notebooks/` | Colab notebook that downloads annual financial statements from Alpha Vantage |
 | `assets/` | Shared CSS and JavaScript, including the DCF calculation in `assets/js/dcf-model.js` |
@@ -29,6 +29,8 @@ Then open <http://localhost:8000>. Charts need a local server because browsers b
 
 ```
 node tests/dcf-model.test.js
+python3 projects/olympics/analysis/analyse.py   # needs pandas, numpy, statsmodels
+node tests/olympics-page.test.js
 ```
 
 The tests compare the model with a separate hand calculation, check that the pieces add up, check a case with a known closed-form answer, and check that invalid inputs are rejected.

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Economics and the Olympics | Harry Hoolahan</title>
-  <meta name="description" content="Four charts on how GDP, population and public sport spending relate to summer Olympic medals at Beijing 2008, London 2012 and Rio 2016, with every figure in the text checked against the data.">
+  <meta name="description" content="How GDP, population, hosting and public sport spending relate to summer Olympic medals at Beijing 2008, London 2012 and Rio 2016: four interactive charts, a Poisson model and a searchable country table, built on audited data.">
   <meta name="theme-color" content="#edf2ea" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f1a15" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://harry-hoolahan.github.io/projects/olympics/">
@@ -12,11 +12,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/olympics.css">
   <script src="../../assets/js/site.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0" defer></script>
   <script src="../../assets/js/charts.js" defer></script>
+  <script src="../../assets/js/olympics.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -39,72 +41,223 @@
       <div class="page-head">
         <p class="crumb"><a href="../../#work">Selected work</a></p>
         <h1>Economics and the Olympics</h1>
-        <p class="lead">Do bigger, richer countries win more summer Olympic medals? Four charts using data for Beijing 2008, London 2012 and Rio 2016.</p>
+        <p class="lead">Do bigger, richer countries win more summer Olympic medals? Four charts, a model that separates GDP, population and hosting, and an audit of the data underneath.</p>
       </div>
 
-      <div class="note">
-        <p>I first built this in 2021 as a University of Bristol data science project, combining two interests: economics and sport. For this version I re-checked every figure in the text against the data files and corrected two statements from the original. The charts are interactive: hover for details, and Figures 1 to 3 have filters.</p>
-      </div>
+      <dl class="strip" aria-label="Project at a glance">
+        <div><dt>country entries</dt><dd>566</dd></div>
+        <div><dt>Games covered</dt><dd>3</dd></div>
+        <div><dt>medals analysed</dt><dd>2,799</dd></div>
+        <div><dt>deviance explained</dt><dd>75%</dd></div>
+      </dl>
 
-      <article class="prose">
-        <h2>1. Does a bigger economy win more medals?</h2>
-      </article>
-      <figure class="chart">
-        <div class="frame" data-chart="charts/chart1-gdp-medals.json" role="img" aria-label="Scatter plot of GDP against Olympic medals won, by country and Games"></div>
-        <figcaption>Figure 1. GDP (PPP, constant 2017 international dollars, log scale) against medals won. Sources: World Bank for GDP, Wikipedia for medals.</figcaption>
-      </figure>
-      <article class="prose">
-        <p>Yes, with a lot of scatter. Across the three Games, 117 country entries had GDP below $10 billion and only five of them won a medal: Samoa and Togo in 2008, Grenada in 2012 and 2016, and Burundi in 2016. Pooling all three Games, the correlation between the log of GDP and medals won is 0.49. It is weakest for African countries (0.41) and stronger for Europe (0.65).</p>
-        <p>Nigeria has one of the largest economies in Africa and won a single medal at Rio 2016. Kenya, Ethiopia and South Africa won 13, 8 and 10 that year.</p>
-        <p>I used GDP at purchasing power parity because it compares countries better than market exchange rates. I used a log scale on the x-axis because GDP in 2016 runs from $0.04 billion (Tuvalu) to $19,097 billion (the United States), and a linear axis would squash most countries into the left edge.</p>
-
-        <h2>2. Does a bigger population win more medals?</h2>
-      </article>
-      <figure class="chart">
-        <div class="frame" data-chart="charts/chart2-population-medals.json" role="img" aria-label="Scatter plot of population against Olympic medals won, by country and Games"></div>
-        <figcaption>Figure 2. Population (log scale) against medals won. Sources: World Bank for population, Wikipedia for medals.</figcaption>
-      </figure>
-      <article class="prose">
-        <p>Figure 2 looks a lot like Figure 1, and that is not a coincidence. Across these countries the log of GDP and the log of population have a correlation of 0.87, so the two charts are not independent evidence. Population on its own is a weaker guide to medals than GDP: the correlation is 0.39.</p>
-        <p>A bigger pool of potential athletes is the obvious explanation, but India shows it is not enough. China, with 1,387.79 million people, won 70 medals at Rio 2016. India, with 1,324.52 million, won two.</p>
-
-        <h2>3. Which countries do best for their size?</h2>
-      </article>
-      <figure class="chart">
-        <div class="frame" data-chart="charts/chart3-people-per-medal.json" role="img" aria-label="Bar chart ranking countries by fewest people per medal won"></div>
-        <figcaption>Figure 3. Countries ranked by people per medal (fewer is better). Medal winners only.</figcaption>
-      </figure>
-      <article class="prose">
-        <p>Small Caribbean nations stand out. Grenada ranked first in both 2012 and 2016, with a single medal each time, which works out at roughly 107,000 and 110,000 people per medal. In 2008 the Bahamas ranked first, ahead of Samoa and Jamaica.</p>
-        <p>One caution: a country with one medal and a tiny population tops this ranking, so the chart rewards a single lucky result. It is better read as a list of overachievers than as a measure of sporting strength.</p>
-
-        <h2>4. Does public spending on sport buy medals?</h2>
-      </article>
-      <figure class="chart">
-        <div class="frame" data-chart="charts/chart4-eu-sport-spend.json" role="img" aria-label="Scatter plot of average public spending on sport and recreation per person against medals won in Europe"></div>
-        <figcaption>Figure 4. Average annual government spending on recreational and sporting services per person, 2013 to 2016, against medals won at Rio 2016. 31 European countries. Source: Eurostat.</figcaption>
-      </figure>
-      <article class="prose">
-        <p>Not in this sample. The correlation between spending per person and medals won is close to zero (−0.06). I expected richer countries to spend more and win more, and that is not what these 31 countries show.</p>
-        <p>Luxembourg and Iceland spent €435.45 and €495.43 per person on average and won no medals at Rio 2016. The United Kingdom spent €75.70 per person and won 67.</p>
-
-        <h2>What these charts cannot tell you</h2>
+      <nav class="subnav" aria-label="On this page">
         <ul>
-          <li><strong>Correlation, not cause.</strong> GDP and population move together, so neither chart isolates one effect.</li>
-          <li><strong>Three Games only.</strong> Hosting, event specialisation and one-off results can move a country a long way in a single Games.</li>
-          <li><strong>Figure 4 mixes units.</strong> It compares spending per person with total medals, so a small, rich country can spend heavily and still not win many medals simply because it is small.</li>
-          <li><strong>Europe only.</strong> The spending data covers 31 European countries, so Figure 4 says nothing about the rest of the world.</li>
+          <li><a href="#findings">Findings</a></li>
+          <li><a href="#gdp">GDP</a></li>
+          <li><a href="#population">Population</a></li>
+          <li><a href="#size">Per person</a></li>
+          <li><a href="#spending">Spending</a></li>
+          <li><a href="#model">Model</a></li>
+          <li><a href="#explorer">Explorer</a></li>
+          <li><a href="#method">Data and audit</a></li>
         </ul>
+      </nav>
 
-        <h2>Data and method</h2>
-        <p>GDP (indicator NY.GDP.MKTP.PP.KD) and population (SP.POP.TOTL) came from the World Bank API using the <code>wbgapi</code> Python package in Google Colab. Medal tables were scraped from Wikipedia with BeautifulSoup. Spending data is a CSV download from Eurostat.</p>
-        <p>Joining medals to World Bank data by country name failed in many cases because the two sources spell names differently. I used the World Bank's economy coder to get three-letter ISO codes and joined on those, then dropped countries with missing GDP or population.</p>
-        <p>Data files:
-          <a href="data/world_bank_medals.csv">all countries</a>,
-          <a href="data/world_bank_medal_winners.csv">medal winners only</a>,
-          <a href="data/eu_spend_sports_recreation.csv">European spending</a>.
-          The correlations quoted above are my calculations from these files.</p>
-      </article>
+      <section id="findings">
+        <article class="prose">
+          <h2>What the data says</h2>
+          <p>I first built this in 2021 as a University of Bristol data science project. For this version I audited the data against an independent medal table, corrected four rows, recomputed every number and added a model. The four charts are the original ones.</p>
+        </article>
+        <ol class="findings">
+          <li><span><strong>Economic size is the strongest signal.</strong> Holding population and hosting constant, a 10% larger economy goes with about 11% more medals (elasticity 1.10, 95% interval 0.98 to 1.22).</span></li>
+          <li><span><strong>Population does not help once GDP is known.</strong> The coefficient on population is negative (−0.37), which says medals follow total economic size rather than headcount. GDP and population are correlated at 0.87, so I would not read that coefficient as more than that.</span></li>
+          <li><span><strong>Hosting is worth roughly double.</strong> A host nation wins about 2.2 times the medals its size would predict (95% interval 1.6 to 3.0), from three hosts: China, the United Kingdom and Brazil.</span></li>
+          <li><span><strong>Public spending on sport shows no link in Europe.</strong> Across 31 European countries the correlation between spending per person and Rio 2016 medals is −0.06.</span></li>
+        </ol>
+      </section>
+
+      <section id="gdp">
+        <article class="prose"><h2>1. Does a bigger economy win more medals?</h2></article>
+        <figure class="chart fig-wide">
+          <div class="frame" data-chart="charts/chart1-gdp-medals.json" data-size="fit" data-height="340" role="img" aria-label="Scatter plot of GDP against Olympic medals won, by country and Games"></div>
+          <figcaption>Figure 1. GDP (PPP, constant 2017 international dollars, log scale) against medals won. Sources: World Bank for GDP, Wikipedia for medals.</figcaption>
+        </figure>
+        <article class="prose">
+          <p class="callout"><strong>What to notice.</strong> Almost nothing below $10 billion of GDP wins a medal, and the cloud rises steadily to the right.</p>
+          <p>Yes, with a lot of scatter. Across the three Games, 117 country entries had GDP below $10 billion and only five of them won a medal: Samoa and Togo in 2008, Grenada in 2012 and 2016, and Burundi in 2016. Pooling all three Games, the correlation between the log of GDP and medals won is 0.51. It is weakest for African countries (0.41) and strongest for Europe (0.70).</p>
+          <p>Nigeria has one of the largest economies in Africa and won a single medal at Rio 2016. Kenya, Ethiopia and South Africa won 13, 8 and 10 that year.</p>
+          <p>I used GDP at purchasing power parity because it compares countries better than market exchange rates. I used a log scale on the x-axis because GDP in 2016 runs from $0.04 billion (Tuvalu) to $19,097 billion (the United States), and a linear axis would squash most countries into the left edge.</p>
+        </article>
+      </section>
+
+      <section id="population">
+        <article class="prose"><h2>2. Does a bigger population win more medals?</h2></article>
+        <figure class="chart fig-wide">
+          <div class="frame" data-chart="charts/chart2-population-medals.json" data-size="fit" data-height="340" role="img" aria-label="Scatter plot of population against Olympic medals won, by country and Games"></div>
+          <figcaption>Figure 2. Population (log scale) against medals won. Sources: World Bank for population, Wikipedia for medals.</figcaption>
+        </figure>
+        <article class="prose">
+          <p class="callout"><strong>What to notice.</strong> The shape looks like Figure 1, but the fit is looser. India and China sit at the same population and a long way apart on medals.</p>
+          <p>Figure 2 looks a lot like Figure 1, and that is not a coincidence. Across these countries the log of GDP and the log of population have a correlation of 0.87, so the two charts are not independent evidence. Population on its own is a weaker guide to medals than GDP: the correlation is 0.40.</p>
+          <p>A bigger pool of potential athletes is the obvious explanation, but India shows it is not enough. China, with 1,387.79 million people, won 70 medals at Rio 2016. India, with 1,324.52 million, won two.</p>
+        </article>
+      </section>
+
+      <section id="size">
+        <article class="prose"><h2>3. Which countries do best for their size?</h2></article>
+        <figure class="chart fig-wide">
+          <div class="frame" data-chart="charts/chart3-people-per-medal.json" data-size="fit" data-height="380" role="img" aria-label="Bar chart ranking countries by fewest people per medal won"></div>
+          <figcaption>Figure 3. Countries ranked by people per medal (fewer is better). Medal winners only.</figcaption>
+        </figure>
+        <article class="prose">
+          <p class="callout"><strong>What to notice.</strong> The top of the list is mostly small countries, many of them islands.</p>
+          <p>Small Caribbean nations stand out. Grenada ranked first in both 2012 and 2016, with a single medal each time, which works out at roughly 107,000 and 110,000 people per medal. In 2008 the Bahamas ranked first, ahead of Samoa and Jamaica.</p>
+          <p>One caution: a country with one medal and a tiny population tops this ranking, so the chart rewards a single lucky result. It is better read as a list of overachievers than as a measure of sporting strength.</p>
+        </article>
+      </section>
+
+      <section id="spending">
+        <article class="prose"><h2>4. Does public spending on sport buy medals?</h2></article>
+        <figure class="chart fig-wide">
+          <div class="frame" data-chart="charts/chart4-eu-sport-spend.json" data-size="fit" data-height="340" role="img" aria-label="Scatter plot of average public spending on sport and recreation per person against medals won in Europe"></div>
+          <figcaption>Figure 4. Average annual government spending on recreational and sporting services per person, 2013 to 2016, against medals won at Rio 2016. 31 European countries. Source: Eurostat.</figcaption>
+        </figure>
+        <article class="prose">
+          <p class="callout"><strong>What to notice.</strong> The two highest spenders are on the floor of the chart.</p>
+          <p>Not in this sample. The correlation between spending per person and medals won is close to zero (−0.06). I expected richer countries to spend more and win more, and that is not what these 31 countries show.</p>
+          <p>Luxembourg and Iceland spent €435.45 and €495.43 per person on average and won no medals at Rio 2016. The United Kingdom spent €75.70 per person and won 67.</p>
+        </article>
+      </section>
+
+      <section id="model">
+        <article class="prose">
+          <h2>5. Separating GDP, population and hosting</h2>
+          <p>The charts compare one factor at a time, and GDP and population move together. To separate them I fitted a Poisson regression of medals on log GDP, log population, a host dummy and Games dummies, using robust standard errors. A Poisson model suits counts that cannot be negative and are often zero. I checked the fit against a separate hand-written implementation, and the coefficients agree to six decimal places.</p>
+        </article>
+        <div class="table-wrap">
+          <table class="fin model">
+            <caption>Poisson regression, 566 country entries. Coefficients are on the log scale; robust (HC1) standard errors.</caption>
+            <thead><tr><th scope="col">Term</th><th scope="col">Coefficient</th><th scope="col">Std. error</th><th scope="col">95% interval</th><th scope="col">Reads as</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Log GDP</th><td>1.098</td><td>0.062</td><td>0.976 to 1.220</td><td>10% more GDP, about 11% more medals</td></tr>
+              <tr><th scope="row">Log population</th><td>−0.372</td><td>0.068</td><td>−0.505 to −0.238</td><td>Negative once GDP is held fixed</td></tr>
+              <tr><th scope="row">Host nation</th><td>0.776</td><td>0.171</td><td>0.441 to 1.110</td><td>About 2.2 times the medals</td></tr>
+              <tr><th scope="row">London 2012 (vs 2008)</th><td>−0.041</td><td>0.121</td><td>−0.278 to 0.196</td><td>No clear difference</td></tr>
+              <tr><th scope="row">Rio 2016 (vs 2008)</th><td>−0.122</td><td>0.123</td><td>−0.364 to 0.119</td><td>No clear difference</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <article class="prose">
+          <p>GDP on its own, with the Games dummies, gives an elasticity of 0.79 and explains 72% of deviance. Adding population and hosting raises that to 75% and lifts the GDP elasticity to 1.10.</p>
+          <h3>Who beats the model, and who falls short</h3>
+          <p>Expected medals are the model's predictions for each country and Games. The tables show the largest gaps among entries with at least one expected medal.</p>
+        </article>
+        <div class="pair">
+          <div class="table-wrap">
+            <table class="fin">
+              <caption>Most medals above expectation</caption>
+              <thead><tr><th scope="col">Country, Games</th><th scope="col">Won</th><th scope="col">Expected</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Russian Federation 2012</th><td class="over">68</td><td>29.0</td></tr>
+                <tr><th scope="row">United Kingdom 2016</th><td class="over">67</td><td>28.3</td></tr>
+                <tr><th scope="row">China 2012</th><td class="over">91</td><td>54.3</td></tr>
+                <tr><th scope="row">Australia 2008</th><td class="over">46</td><td>13.8</td></tr>
+                <tr><th scope="row">Russian Federation 2008</th><td class="over">60</td><td>28.8</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table class="fin">
+              <caption>Most medals below expectation</caption>
+              <thead><tr><th scope="col">Country, Games</th><th scope="col">Won</th><th scope="col">Expected</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">India 2016</th><td class="under">2</td><td>26.3</td></tr>
+                <tr><th scope="row">Brazil 2016</th><td class="under">19</td><td>39.8</td></tr>
+                <tr><th scope="row">Japan 2008</th><td class="under">25</td><td>43.4</td></tr>
+                <tr><th scope="row">Saudi Arabia 2016</th><td class="under">0</td><td>18.1</td></tr>
+                <tr><th scope="row">Saudi Arabia 2012</th><td class="under">1</td><td>18.0</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <article class="prose">
+          <p>The model knows nothing about how a country organises sport, what events it targets, or the reallocation of medals after doping cases, so these gaps are questions to investigate rather than explanations. Brazil in 2016 is a useful warning: it was the host, so the model already counts the home advantage, and it still fell well short.</p>
+        </article>
+      </section>
+
+      <section id="explorer">
+        <article class="prose">
+          <h2>6. Country explorer</h2>
+          <p>Every country and Games in the analysis, with the model's expected medals. Search by name, filter by year and click a column heading to sort. Differences of five medals or more are coloured.</p>
+        </article>
+        <div id="explorer-tool">
+          <div class="explorer-controls">
+            <label>Country<input type="search" name="q" placeholder="e.g. Jamaica" autocomplete="off"></label>
+            <label>Games<select name="year"><option value="">All</option><option>2008</option><option>2012</option><option>2016</option></select></label>
+          </div>
+          <div class="explorer-scroll">
+            <table class="fin">
+              <caption class="sr-only">Medals won and expected by country and Games</caption>
+              <thead><tr>
+                <th scope="col" aria-sort="none"><button type="button">Country</button></th>
+                <th scope="col" aria-sort="none"><button type="button">Games</button></th>
+                <th scope="col" aria-sort="none"><button type="button">Continent</button></th>
+                <th scope="col" aria-sort="none"><button type="button">GDP ($bn)</button></th>
+                <th scope="col" aria-sort="none"><button type="button">Population (m)</button></th>
+                <th scope="col" aria-sort="descending"><button type="button">Medals</button></th>
+                <th scope="col" aria-sort="none"><button type="button">Expected</button></th>
+                <th scope="col" aria-sort="none"><button type="button">Difference</button></th>
+              </tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="count" aria-live="polite">Loading…</p>
+        </div>
+      </section>
+
+      <section id="method">
+        <article class="prose">
+          <h2>What these results cannot tell you</h2>
+          <ul>
+            <li><strong>Correlation, not cause.</strong> Even with a model, this is observational data. Richer countries may win more for reasons that are not about money.</li>
+            <li><strong>Three Games only, and three hosts.</strong> The host effect rests on China, the United Kingdom and Brazil.</li>
+            <li><strong>Figure 4 mixes units.</strong> It compares spending per person with total medals, so a small, rich country can spend heavily and still not win many medals simply because it is small.</li>
+            <li><strong>Europe only.</strong> The spending data covers 31 European countries, so Figure 4 says nothing about the rest of the world.</li>
+            <li><strong>Some countries are missing.</strong> The World Bank has no PPP GDP series for Cuba, North Korea, Chinese Taipei, Venezuela or the Independent Olympic Athletes, so their 84 medals are not in the GDP analysis.</li>
+          </ul>
+
+          <h2>Data and method</h2>
+        </article>
+        <ol class="pipeline">
+          <li><strong>Collect</strong>World Bank GDP and population by <code>wbgapi</code>; medal tables from Wikipedia; Eurostat spending CSV.</li>
+          <li><strong>Join</strong>On three-letter ISO codes, because country names differ between sources.</li>
+          <li><strong>Audit</strong>Compared with an independent table built from athlete-level results.</li>
+          <li><strong>Correct</strong>Four rows fixed and logged in CORRECTIONS.md.</li>
+          <li><strong>Model</strong>Poisson regression, cross-checked by hand; results saved as JSON.</li>
+          <li><strong>Publish</strong>Charts, tables and explorer read the same files.</li>
+        </ol>
+        <article class="prose">
+          <p>GDP (indicator NY.GDP.MKTP.PP.KD) and population (SP.POP.TOTL) came from the World Bank API using the <code>wbgapi</code> Python package in Google Colab. Medal tables were scraped from Wikipedia with BeautifulSoup. Spending data is a CSV download from Eurostat. Joining medals to World Bank data by country name failed in many cases, so I used the World Bank's economy coder to get ISO codes and joined on those, then dropped countries with missing GDP or population.</p>
+          <h3>The data audit</h3>
+          <p>I rebuilt a medal table from the TidyTuesday athlete-level Olympic history file and compared it country by country. That found four clear errors: Germany and France had zero medals in 2012, Brazil had zero in 2016, and Iran was credited with 44 medals in 2012 instead of 12. All four are fixed in both data files and logged in <a href="data/CORRECTIONS.md">CORRECTIONS.md</a>. The fixes moved the pooled GDP correlation from 0.49 to 0.51 and the European one from 0.65 to 0.70.</p>
+          <h3>Data dictionary</h3>
+          <dl class="dict">
+            <dt><code>economy</code>, <code>Country</code></dt><dd>ISO code and name from the World Bank.</dd>
+            <dt><code>GDP (billions $)</code></dt><dd>GDP at purchasing power parity, constant 2017 international dollars.</dd>
+            <dt><code>Total Population (millions)</code></dt><dd>Mid-year population.</dd>
+            <dt><code>Gold</code>, <code>Silver</code>, <code>Bronze</code>, <code>Total</code></dt><dd>Medals won at that Games.</dd>
+            <dt><code>GDP per medal</code>, <code>People per medal</code></dt><dd>Derived. Blank-equivalent (<code>#DIV/0!</code>) for countries with no medals.</dd>
+            <dt><code>Year</code>, <code>Continent</code></dt><dd>Games year (2008, 2012, 2016) and region.</dd>
+          </dl>
+          <p>Files:
+            <a href="data/world_bank_medals.csv">all countries</a>,
+            <a href="data/world_bank_medal_winners.csv">medal winners only</a>,
+            <a href="data/eu_spend_sports_recreation.csv">European spending</a>,
+            <a href="data/model_results.json">model results</a>.
+            Every number on this page is recomputed from these files by <a href="https://github.com/harry-hoolahan/harry-hoolahan.github.io/blob/main/projects/olympics/analysis/analyse.py">analyse.py</a>, and a test checks the page text against the results.</p>
+        </article>
+      </section>
     </div>
   </main>
 
