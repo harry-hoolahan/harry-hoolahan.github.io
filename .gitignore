@@ -1,0 +1,8 @@
+# Secrets: never commit API keys or local environment files
+.env
+*.key
+# Local tooling and OS files
+node_modules/
+.DS_Store
+.ipynb_checkpoints/
+financial_statements.xlsx
